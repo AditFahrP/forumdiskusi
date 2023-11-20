@@ -2,7 +2,7 @@
     height: 32px;
 }
 
-.nabar-nav {
+.navbar-nav {
     .nav-link.active {
         color: $white;
         font-weight: bold;
@@ -21,6 +21,7 @@
     padding-left: 0;
     padding-right: 0;
 }
+
 @include media-breakpoint-up(lg) {
     .nav-item {
         padding-left: 20px;
@@ -36,7 +37,7 @@
     min-width: 128px;
 
     &:hover {
-        background-color: $gray-200;
+        background-color: $gray-100;
         color: $primary;
     }
 }
@@ -51,4 +52,89 @@
     &:hover {
         color: $white;
     }
+}
+
+.btn-secondary {
+    background-color: $white;
+    border-color: $blue;
+    color: $blue;
+    border-radius: 50px;
+    padding: 10px 24px;
+    min-width: 128px;
+
+    &:hover {
+        color: $white;
+        background-color: $primary;
+        border-color: $primary;
+    }
+}
+
+.h-315px {
+    height: 315px;
+}
+
+.min-h-372px {
+    min-height: 372px;
+}
+
+.bg-gray {
+    background-color: $gray-100;
+}
+
+.py-80px {
+    padding-bottom: 80px;
+    padding-top: 80px;
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.color-gray {
+    color: $gray-500;
+}
+
+.card-avatar-sm {
+    width: 18px;
+    height: 18px;
+}
+
+.text-bg-light {
+    &:hover {
+        color: $primary !important;
+    }
+}
+
+.avatar-sm-wrapper {
+    height: 18px;
+    width: 18px;
+}
+
+.avatar {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.fs-12px {
+    font-size: 12px;
+}
+
+footer {
+    background-color: $gray-800;
+}
+
+.ms-140px {
+    margin-right: 140px;
+}
+
+.me-140px {
+    margin-right: 140px;
 }
