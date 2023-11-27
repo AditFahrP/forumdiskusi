@@ -2,14 +2,29 @@
 
 @section('body')
     <section class="bg-gray vh-100">
-        <div class="container h-100 pt-5">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-3">
-                    <a class="nav-link mb-5 text-center" href="{{ route('home') }}">
-                        <img class="h-32px" src="{{ url('assests/images/logo-2.svg') }}" alt="logo-diskusi">
+        <div class="container">
+            <div class="row pt-5 justify-content-center">
+                <div class="col-12 col-lg-6 my-auto mb-5 mb-lg-auto me-0">
+                    <div class="d-none d-lg-block">
+                        <h2>Lorem ipsum dolor sit amet.</h2>
+                        <p>
+                            <ul>
+                                <li>Lorem, ipsum dolor.</li>
+                                <li>Lorem ipsum dolor sit amet.</li>
+                                <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="d-block d-lg-none fs-4 text-center">
+                        Lorem ipsum dolor sit amet.
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3 h-100">
+                    <a href="{{ route('home') }}" class="nav-link mb-5 text-center">
+                        <img src="{{ url('assests/images/logo-2.svg') }}" alt="logo diskusi" class="h-32px">
                     </a>
                     <div class="card mb-5">
-                        <form action="" method="POST">
+                        <form action="#">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" autocomplete="off" autofocus>
@@ -25,13 +40,17 @@
                                     </span>
                                 </div>
                             </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" autocomplete="off">
+                            </div>
                             <div class="mb-3 d-grid">
-                                <button type="submit" class="btn btn-primary rounded-2">Log in</button>
+                                <button type="submit" class="btn btn-primary rounded-2">Sign up</button>
                             </div>
                         </form>
                     </div>
                     <div class="text-center">
-                        Dont't have an account? <a href="{{ route('auth.sign-up.show') }}" class="text-underline"><u>Sign up</u></a>
+                        Already have an account? <a href="{{ route('auth.login.show') }}"><u>Log in</u></a>
                     </div>
                 </div>
             </div>
@@ -51,7 +70,7 @@
                 $('#password').attr('type', 'text');
             }
             else {
-            $('#password-toggle-img').attr('src', "{{ url('assests/images/eye-slash.svg') }}");
+                $('#password-toggle-img').attr('src', "{{ url('assests/images/eye-slash.svg') }}");
                 $('#password').attr('type', 'password');
             }
         });

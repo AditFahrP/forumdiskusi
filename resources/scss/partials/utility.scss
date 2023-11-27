@@ -131,10 +131,25 @@ footer {
     background-color: $gray-800;
 }
 
-.ms-140px {
+.me-140px {
     margin-right: 140px;
 }
 
-.me-140px {
-    margin-right: 140px;
+.like-icon {
+    height: 32px;
+    width: 32px;
+}
+
+pre {
+    padding: 12px;
+    font-size: 14px;
+    background-color: #fafbfd;
+    border: 1px solid #eaecf0;
+    border-radius: 6px;
+    color: #68747f;
+}
+
+.avatar-wrapper {
+    height: 128px;
+    width: 128px;
 }
