@@ -23,6 +23,10 @@ class DiscussionController extends Controller
      */
     public function create()
     {
+        // return response()->view('pages.discussions.form', [
+        //     'categories' => Category::all(),
+        // ]);
+
         return response()->view('pages.discussions.form', [
             'categories' => Category::all(),
         ]);

@@ -19,10 +19,13 @@
                             <div class="col-12">
                                 <form action="{{ route('discussions.store') }}" method="POST">
                                     @csrf
+
+
+                                    
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Title</label>
                                         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" 
-                                        name="title" value="{{ old('title') }}" autofocus>
+                                        name="title" value="{{ $discusion->title ?? old('title') }}" autofocus>
                                         @error('title') 
                                             <div class="invalid-feedback">{{ $message }}</div> 
                                         @enderror
@@ -54,6 +57,7 @@
                                         <button class="btn btn-primary me-4" type="submit">Submit</button>
                                         <a href="{{ route('discussions.index') }}">Cancle</a>
                                     </div>
+                                    
                                 </form>
                             </div>
                         </div>
