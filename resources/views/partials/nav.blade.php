@@ -20,15 +20,15 @@
         </ul>
         <form class="d-flex w-100 me-4 my-2 my-lg-0" role="search" action="#" method="GET">
             <div class="input-group">
-                <span class="input-group-text bg-white border-end-0"><img src="{{ url('assests/images/magnifier.svg')}}" alt=""></span>
-                <input class="form-control border-start-0 ps-0" type="search" placeholder="Search" aria-label="Search" name="" value="">
+                <span class="input-group-text bg-white border-end-0"><img src="{{ url('assests/images/magnifier.svg')}}" alt="Search"></span>
+                <input class="form-control border-start-0 ps-0" type="search" placeholder="Search" aria-label="Search" name="search" value="">
             </div>
         </form>
         <ul class="navbar-nav ms-auto my-2 my-lg-0">
         @auth
           <li class="nav-item my-auto  dropdown">
-            <a class="nav-link p-0 d-flex align-items-center" href="javascript:;" data-bs-toggle="dropdown">Log In
-              <div class="avatar-nv-wrapper me-2">
+            <a class="nav-link p-0 d-flex align-items-center" href="javascript:;" data-bs-toggle="dropdown">
+              <div class="avatar-nav-wrapper me-2">
                 <img src="{{ filter_var(auth()->user()->picture, FILTER_VALIDATE_URL) 
                 ? auth()->user()->picture : Storage::url(auth()->user()->picture) }}" 
                 alt="{{ auth()->user()->username }}" class="avatar rounded-circle">
@@ -36,8 +36,8 @@
               <span class="fw-bold">{{ auth()->user()->username }}</span>
             </a>
             <ul class="dropdown-menu mt-2">
-              <li><a class="dropdown-item" href="">My Profile</a></li>
-              <li><form action="{{ route('auth.login.logout') }}">
+              <li><a class="dropdown-item" href="{{ route('users.show', auth()->user()->username) }}">My Profile</a></li>
+              <li><form action="{{ route('auth.login.logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="dropdown-item">Log out</button></form></li>
             </ul>
