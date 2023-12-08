@@ -2,7 +2,7 @@
 @if (Session::has('notif.success')) style="display: block !important" @endif>
     <div class="container">
         @if (Session::has('notif.success'))
-            {{ Sesssion::get('notif.success') }}
+            {{ Session::get('notif.success') }}
         @endif
     </div>
 </div>

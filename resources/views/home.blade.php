@@ -20,7 +20,7 @@
             <div class="row">
               <div class="col-12 col-lg-4 text-center">
                 <img class="promote-icon mb-2" src="{{ url('assests/images/discussions.svg') }}" alt="discussion-logo">
-                <h2>Discusiions</h2>
+                <h2>Discussions</h2>
                 <p class="fs-3">Lorem, ipsum dolor.</p>
               </div>
               <div class="col-12 col-lg-4 text-center">

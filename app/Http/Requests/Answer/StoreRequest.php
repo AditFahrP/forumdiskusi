@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Discussion;
+namespace App\Http\Requests\Answer;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,9 +22,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:120',
-            'category_slug' => 'required|string|exists:App\Models\Category,slug',
-            'content' => 'required|string',
+            'answer' => 'required|string',
         ];
     }
 }

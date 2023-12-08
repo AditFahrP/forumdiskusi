@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\DiscussionController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +18,21 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::namespace('App\Http\Controllers')->group(function() {
         Route::resource('discussions', DiscussionController::class)
-        ->only(['create', 'store', 'edit', 'destroy']);
+        ->only(['create', 'store', 'edit', 'update', 'destroy']);
+        Route::post('discussions/{discussion}/like', 'LikeController@discussionLike')
+        ->name('discussions.like.like');
+        Route::post('discussions/{discussion}/unlike', 'LikeController@discussionUnlike')
+        ->name('discussions.like.unlike');
+        Route::post('discussions/{discussion}/answer', 'AnswerController@store')
+        ->name('discussions.answer.store');
     });
+});
+
+Route::namespace('App\Http\Controllers')->group(function() {
+    Route::resource('discussions', DiscussionController::class)
+        ->only(['index', 'show']);
+    Route::get('discussions/categories/{category}', 'CategoryController@show')
+        ->name('discussions.categories.show');
 });
 
 Route::get('/', function () {
@@ -32,14 +46,6 @@ Route::namespace('App\Http\Controllers\Auth')->group(function() {
     Route::get('sign-up', 'SignupController@show')->name('auth.sign-up.show');
     Route::post('sign-up', 'SignupController@signup')->name('auth.sign-up.sign-up');
 });
-
-Route::get('discussions', function () {
-    return view('pages.discussions.index');
-})->name('discussions.index');
-
-Route::get('discussions/lorem', function () {
-    return view('pages.discussions.show');
-})->name('discussions.show');
 
 Route::get('answers/1', function () {
     return view('pages.answers.form');
