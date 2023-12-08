@@ -148,8 +148,10 @@
                             create an account</a> to participate in this discussion.</div>
                         </div>  
                     @endguest
-                    <div class="col-12 col-lg-4">
-                        <div class="card">
+                    
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card">
                         <h3>All Categories</h3>
                         <div>
                             @foreach ($categories as $category)
@@ -158,7 +160,6 @@
                             </a>                            
                             @endforeach
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
