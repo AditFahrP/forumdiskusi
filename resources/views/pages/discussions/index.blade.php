@@ -27,10 +27,10 @@
                         <div class="row">
                             <div class="col-12 col-lg-2 mb-1 mb-lg-0 d-flex flex-row flex-lg-column align-items-end">
                                 <div class="text-nowrap me-2 me-lg-0">
-                                    3 Likes
+                                    {{ $discussion->likeCount . ' ' . Str::plural('like', $discussion->likeCount) }}
                                 </div>
                                 <div class="text-nowrap color-gray">
-                                    9 Answers
+                                    {{ $discussion->answers->count() . ' ' . Str::plural('answer', $discussion->answers->count()) }}
                                 </div>
                             </div>
                             <div class="col-12 col-lg-10">
@@ -46,14 +46,15 @@
                                     </div>
                                     <div class="col-5 col-lg-4">
                                         <div class="avatar-sm-wrapper d-inline-block">
-                                            <a href="{{ route('users.show', $discussion->user->username) }}" class="me-1">
-                                                <img src="{{ filter_var($discussion->user->picture, FILTER_VALIDATE_URL) 
-                                                    ? $discussion->user->picture : Storage::url($discussion->user->picture) }}" alt="{{ $discussion->user->name }}" class="avatar rounded-circle">
+                                            <a href="{{ route('users.show', $discussion->user->username ?? '') }}" class="me-1">
+                                                <img src="{{ filter_var($discussion->user->picture ?? '', FILTER_VALIDATE_URL) 
+                                                    ? $discussion->user->picture : Storage::url($discussion->user->picture ?? '') }}" 
+                                                    alt="{{ $discussion->user->name ?? '' }}" class="avatar rounded-circle">
                                             </a>
                                         </div>
                                         <span class="fs-12px">
-                                            <a href="{{ route('users.show', $discussion->user->username)}}" class="me-1 fw-bold">
-                                                {{ $discussion->user->username }}
+                                            <a href="{{ route('users.show', $discussion->user->username ?? '') }}" class="me-1 fw-bold">
+                                                {{ $discussion->user->username ?? '' }}
                                             </a>
                                             <span class="color-gray">{{ $discussion->created_at->diffforhumans() }}</span>
                                         </span>

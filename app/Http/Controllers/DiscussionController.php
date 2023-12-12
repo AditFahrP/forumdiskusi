@@ -112,7 +112,7 @@ class DiscussionController extends Controller
             return abort(404);
         }
 
-        $discussionAnswer = Answer::where('discussion_id', $discussion->id)
+        $discussionAnswers = Answer::where('discussion_id', $discussion->id)
             ->orderBy('created_at', 'desc')
             ->paginate(5);
 
@@ -124,7 +124,7 @@ class DiscussionController extends Controller
             'categories' => Category::all(),
             'likedImage' => $likedImage,
             'notLikedImage' => $notLikedImage,
-            'discussionAnswer' => $discussionAnswer,
+            'discussionAnswers' => $discussionAnswers,
         ]);
     }
 
@@ -243,8 +243,10 @@ class DiscussionController extends Controller
         if (!$isOwnByUser) {
             return abort(404);
         }
-
+        
         $delete = $discussion->delete();
+        
+        
 
         if ($delete) {
             session()->flash('notif.success', 'Discussion deleted successfully');

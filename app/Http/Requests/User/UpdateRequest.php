@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\Rule;
 
-class SignupRequest extends FormRequest
+
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +25,13 @@ class SignupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:App\Models\User,email|min:8|max:50',
-            'password' => ['required', Password::min(8)->mixedCase()->numbers()],
-            'username' => 'required|alpha_dash|unique:App\Models\User,username|min:3|max:50',
+            'username' => ['required', 'alpha_dash', 
+            Rule::unique('users')->ignore(request()->username, 'username'),
+            'min:3', 'max:50'],
+            'password' => ['nullable', 'confirmed',
+            Password::min(8)->mixedCase()->numbers()],
+            'password_confirmation' => ['nullable'],
+            'picture' => ['nullable', 'image', 'max:2000'],
         ];
     }
 }

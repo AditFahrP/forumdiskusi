@@ -6,12 +6,12 @@
             <div class="row pt-5 justify-content-center">
                 <div class="col-12 col-lg-6 my-auto mb-5 mb-lg-auto me-0">
                     <div class="d-none d-lg-block">
-                        <h2>Lorem ipsum dolor sit amet.</h2>
+                        <h2>Join the Diskusi Community</h2>
                         <p>
                             <ul>
-                                <li>Lorem, ipsum dolor.</li>
-                                <li>Lorem ipsum dolor sit amet.</li>
-                                <li>Lorem ipsum, dolor sit amet consectetur adipisicing.</li>
+                                <li>Stuck? Ask in the Discussions</li>
+                                <li>Get answers from experienced developers from around the world</li>
+                                <li>Contribute by answering questions</li>
                             </ul>
                         </p>
                     </div>
