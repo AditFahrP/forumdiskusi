@@ -244,6 +244,8 @@ class DiscussionController extends Controller
             return abort(404);
         }
         
+        $discussion->answers()->delete();
+        
         $delete = $discussion->delete();
         
         

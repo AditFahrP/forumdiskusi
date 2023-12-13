@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
+            $table->foreign('discussion_id')->references('id')->on('discussions')->onDelete('cascade');
             $table->bigInteger('discussion_id')->unsigned();
             $table->text('answer');
             $table->timestamps();
