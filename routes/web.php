@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\My\UserController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,20 +19,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-    Route::namespace('App\Http\Controllers\My')->group(function() {
+    Route::namespace('App\Http\Controllers\My')->group(function () {
         Route::resource('users', UserController::class)->only(['edit', 'update']);
     });
-    Route::namespace('App\Http\Controllers')->group(function() {
+    Route::namespace('App\Http\Controllers')->group(function () {
         Route::resource('discussions', DiscussionController::class)
-        ->only(['create', 'store', 'edit', 'update', 'destroy']);
+            ->only(['create', 'store', 'edit', 'update', 'destroy']);
 
         Route::post('discussions/{discussion}/like', 'LikeController@discussionLike')
-        ->name('discussions.like.like');
+            ->name('discussions.like.like');
         Route::post('discussions/{discussion}/unlike', 'LikeController@discussionUnlike')
-        ->name('discussions.like.unlike');
-        
+            ->name('discussions.like.unlike');
+
         Route::post('discussions/{discussion}/answer', 'AnswerController@store')
-        ->name('discussions.answer.store');
+            ->name('discussions.answer.store');
 
         Route::resource('answers', AnswerController::class)->only(['edit', 'update', 'destroy']);
         Route::post('answers/{answer}/like', 'LikeController@answerLike')->name('answers.like.like');
@@ -38,7 +40,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::namespace('App\Http\Controllers')->group(function() {
+Route::namespace('App\Http\Controllers')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('discussions', DiscussionController::class)
         ->only(['index', 'show']);
@@ -46,7 +48,7 @@ Route::namespace('App\Http\Controllers')->group(function() {
         ->name('discussions.categories.show');
 });
 
-Route::namespace('App\Http\Controllers\Auth')->group(function() {
+Route::namespace('App\Http\Controllers\Auth')->group(function () {
     Route::get('login', 'LoginController@show')->name('auth.login.show');
     Route::post('login', 'LoginController@login')->name('auth.login.login');
     Route::post('logout', 'LoginController@logout')->name('auth.login.logout');
@@ -54,6 +56,10 @@ Route::namespace('App\Http\Controllers\Auth')->group(function() {
     Route::post('sign-up', 'SignupController@signup')->name('auth.sign-up.sign-up');
 });
 
-Route::namespace('App\Http\Controllers\My')->group(function() {
+Route::namespace('App\Http\Controllers\My')->group(function () {
     Route::resource('users', UserController::class)->only(['show']);
+});
+
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
 });
