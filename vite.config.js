@@ -11,8 +11,5 @@ export default defineConfig({
     build: {
         manifest: true,
         outDir: "public/build", // Pastikan output di `public/build`
-        rollupOptions: {
-            input: "resources/scss/app.scss",
-        },
     },
 });
