@@ -12,4 +12,7 @@ export default defineConfig({
         manifest: true,
         outDir: "public/build", // Pastikan output di `public/build`
     },
+    server: {
+        https: true, // Pastikan server menggunakan HTTPS
+    },
 });
