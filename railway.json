@@ -1,8 +1,5 @@
 {
     "build": {
-        "env": {
-            "NODE_ENV": "development"
-        },
         "cmd": [
             "composer install --no-dev --optimize-autoloader",
             "npm install && npm run build",
